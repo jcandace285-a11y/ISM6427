@@ -1,6 +1,35 @@
+/* Theme tokens: light is the default, the original look is "dark" */
+:root {
+  --page-bg: #eef3fb;
+  --page-gradient: linear-gradient(160deg, #f8fbff 0%, #e3edfb 50%, #fde8df 100%);
+  --text: #1c2433;
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(28, 36, 51, 0.08);
+  --glass-shadow: 0 8px 32px rgba(28, 36, 51, 0.08);
+  --placeholder: rgba(28, 36, 51, 0.45);
+  --button-bg: rgba(28, 36, 51, 0.08);
+  --button-hover: rgba(28, 36, 51, 0.14);
+  --divider: rgba(28, 36, 51, 0.1);
+  --link: #2563eb;
+}
+
+:root[data-theme="dark"] {
+  --page-bg: #6a5acd;
+  --page-gradient: linear-gradient(160deg, #4a90e2 0%, #6a5acd 50%, #ff7e5f 100%);
+  --text: #fff;
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --placeholder: rgba(255, 255, 255, 0.7);
+  --button-bg: rgba(255, 255, 255, 0.25);
+  --button-hover: rgba(255, 255, 255, 0.35);
+  --divider: rgba(255, 255, 255, 0.2);
+  --link: #fff;
+}
+
 html {
   min-height: 100%;
-  background: #6a5acd;
+  background: var(--page-bg);
 }
 
 * {
@@ -12,8 +41,8 @@ html {
 body {
   min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-  color: #fff;
-  background: linear-gradient(160deg, #4a90e2 0%, #6a5acd 50%, #ff7e5f 100%);
+  color: var(--text);
+  background: var(--page-gradient);
   padding: 24px 16px;
 }
 
@@ -26,13 +55,13 @@ body {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
   padding: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--glass-shadow);
 }
 
 h2 {
@@ -56,20 +85,20 @@ h2 {
   background: transparent;
   border: none;
   outline: none;
-  color: #fff;
+  color: inherit;
   font-size: 16px;
   padding: 8px 12px;
 }
 
 .search input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--placeholder);
 }
 
 .search button {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--button-bg);
   border: none;
   border-radius: 12px;
-  color: #fff;
+  color: inherit;
   font-size: 14px;
   font-weight: 600;
   padding: 8px 16px;
@@ -77,7 +106,12 @@ h2 {
 }
 
 .search button:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--button-hover);
+}
+
+.search .theme-toggle {
+  padding: 8px 12px;
+  font-size: 16px;
 }
 
 /* Current */
@@ -135,7 +169,7 @@ h2 {
   grid-template-columns: 1fr 40px 1fr;
   align-items: center;
   padding: 10px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid var(--divider);
 }
 
 .day:first-child {
@@ -175,5 +209,5 @@ h2 {
 }
 
 .credit a {
-  color: #fff;
+  color: var(--link);
 }

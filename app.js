@@ -118,4 +118,26 @@ document.getElementById("search-form").addEventListener("submit", async (e) => {
   }
 });
 
+// Light/dark theme toggle (light is the default)
+const themeToggle = document.getElementById("theme-toggle");
+
+function applyTheme(theme) {
+  if (theme === "dark") {
+    document.documentElement.dataset.theme = "dark";
+  } else {
+    delete document.documentElement.dataset.theme;
+  }
+  themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
+}
+
+applyTheme(document.documentElement.dataset.theme === "dark" ? "dark" : "light");
+
+themeToggle.addEventListener("click", () => {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try {
+    localStorage.setItem("theme", next);
+  } catch (e) {}
+});
+
 loadWeather(DEFAULT_LOCATION);

@@ -5,12 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weather</title>
   <link rel="stylesheet" href="style.css" />
+  <script>
+    try {
+      if (localStorage.getItem("theme") === "dark") document.documentElement.dataset.theme = "dark";
+    } catch (e) {}
+  </script>
 </head>
 <body>
   <main class="app">
     <form id="search-form" class="glass search">
       <input id="search-input" type="text" placeholder="Search city..." autocomplete="off" />
       <button type="submit">Search</button>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
     </form>
 
     <section class="glass current">
